@@ -1,8 +1,264 @@
-[gd_scene load_steps=2 format=3 uid="uid://4sy4oeoj170"]
+[gd_scene load_steps=13 format=3 uid="uid://4sy4oeoj170"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_vq3a5"]
+[ext_resource type="PackedScene" uid="uid://clhttn3a0ep70" path="res://part_c.tscn" id="1_gn0ur"]
 
-[node name="Part_B" type="Node3D"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ys316"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.372318, 0.17526, 0.323299, 1)
+ground_bottom_color = Color(0.788235, 0, 0.592157, 1)
+ground_horizon_color = Color(0.372318, 0.17526, 0.323299, 1)
+energy_multiplier = 2.75
 
-[node name="PlaceholderCube" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_vq3a5")
+[sub_resource type="Sky" id="Sky_to4tk"]
+sky_material = SubResource("ProceduralSkyMaterial_ys316")
+
+[sub_resource type="Environment" id="Environment_0jsbj"]
+background_mode = 2
+sky = SubResource("Sky_to4tk")
+tonemap_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_m6jki"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ys316"]
+albedo_color = Color(0.21448, 0.1344, 0.28, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_m6jki"]
+top_radius = 0.98
+height = 1.01
+rings = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ys316"]
+height = 0.34
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_to4tk"]
+height = 0.515
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0jsbj"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_q6bo7"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_eso0h"]
+top_radius = 0.995
+bottom_radius = 0.255
+
+[node name="Part_A" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.257133, -0.836906, 0.483188, 0, 0.5, 0.866025, -0.966376, 0.222684, -0.128566, 0, 0, 0)
+light_color = Color(0, 1, 1, 1)
+light_energy = 16.15
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0jsbj")
+
+[node name="PlaceholderFloor" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.67902, 0, 0, 0, 1, 0, 0, 0, 2.65012, 0, 0, 0)
+mesh = SubResource("PlaneMesh_m6jki")
+surface_material_override/0 = SubResource("StandardMaterial3D_ys316")
+
+[node name="top lamp" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.92, 0, 0, 0, -0.386508, 0.834872, 0, -0.834872, -0.386508, -0.0729831, 3.78931, -0.250788)
+mesh = SubResource("CylinderMesh_m6jki")
+
+[node name="lamp base" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.57, 0, 0, 0, 1.07, 0, 0, 0, 2.13, -0.00293064, 0.16281, 1.62293)
+mesh = SubResource("CylinderMesh_ys316")
+
+[node name="lamp turney base" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.72, 0, 0, 0, 0.94, 0, 0, 0, 0.61, -0.00293064, 0.391176, 2.35148)
+mesh = SubResource("CylinderMesh_to4tk")
+
+[node name="more turney base" type="MeshInstance3D" parent="lamp turney base"]
+transform = Transform3D(0.602, 0, 0, 0, 1.003, 0, 0, 0, 0.57, 0, 0.86636, 0.0999236)
+mesh = SubResource("CylinderMesh_0jsbj")
+
+[node name="more turney base2" type="MeshInstance3D" parent="lamp turney base"]
+transform = Transform3D(0.392, 0, 0, 0, 0.346588, -0.31443, 0, 0.553431, 0.196913, 0, 4.31707, -2.03243)
+mesh = SubResource("CylinderMesh_0jsbj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 2.08096, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 2.17834, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 2.24527, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 2.3305, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 2.40478, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 2.47171, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 2.55694, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 2.63222, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 2.69915, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 2.78438, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 2.87527, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 2.9422, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 3.02742, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 3.08469, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 3.15162, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 3.23684, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 3.34613, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 3.44351, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 3.51044, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 3.59566, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 3.66995, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 3.73688, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D23" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 3.8221, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 3.89738, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D25" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 3.96431, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D26" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 4.04954, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D27" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 4.14043, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D28" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 4.20736, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D29" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 4.29259, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D30" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 4.34985, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D31" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 4.41678, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D32" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 4.50201, 2.41952)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D33" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 4.57074, 2.37715)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D34" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 4.64505, 2.29192)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D35" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 4.70685, 2.21751)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D36" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 4.75428, 2.13719)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D37" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 4.78875, 2.02433)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D38" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 4.78875, 1.96429)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D39" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 4.78875, 1.87783)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D40" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 4.78875, 1.79899)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D41" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 4.78875, 1.72229)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D42" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 4.78875, 1.61985)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D43" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.0199561, 4.78875, 1.50838)
+mesh = SubResource("SphereMesh_q6bo7")
+
+[node name="MeshInstance3D44" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.25305, -0.0909294, 0.322641, -0.293098, -0.136147, -0.268249, 0.162663, -0.386776, 0.018573, -0.00293064, 4.03344, 0.494936)
+mesh = SubResource("CylinderMesh_eso0h")
+
+[node name="Part_C" parent="." instance=ExtResource("1_gn0ur")]
+offset_left = -207.0
+offset_top = -96.0
+offset_right = -207.0
+offset_bottom = -96.0
+scale = Vector2(0.56, 1.12)
+
+[node name="Camera3D" type="Camera3D" parent="Part_C"]
+transform = Transform3D(-0.0404674, -0.12004, -0.991944, 0.00701915, 0.992699, -0.120418, 0.999156, -0.0118356, -0.0393294, -7.15161, 1.63687, -0.855435)
